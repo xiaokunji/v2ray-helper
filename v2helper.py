@@ -34,7 +34,8 @@ def main():
 
     headers0 = {
         'origin': 'https://w1.v2free.net',
-        'referer' : 'https://w1.v2free.net/auth/login'
+        # 'referer' : 'https://forever.ypork.com/auth/login'
+        'referer' : 'https://w1.v2free.net/auth/login' 
     }
     try:
         r0 = s.post(url0, data=fromdata, headers=headers0, timeout=15)
@@ -46,8 +47,7 @@ def main():
         t = json.loads(r0.text)
         print(t['msg'])
     else:
-        print("登录失败")
-        # send_wechat("登录失败")
+        send_wechat("登录失败")
 
     url2 = f"https://w1.v2free.net/user/checkin"
 

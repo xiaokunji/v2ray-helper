@@ -3,7 +3,7 @@ name: "v2ray-helper"
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 */4 * *"
+    - cron: "12 9 */1 * *"
 
 jobs:
   build:

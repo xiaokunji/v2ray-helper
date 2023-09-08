@@ -19,10 +19,9 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.8'
+          python-version: '3.10'
 
       - name: Run sign
         run: |
-          pip install --upgrade pip
           pip install -r requirements.txt
           echo "${{ secrets.PW }}" | tr '#' "\n" | xargs -I {} sh -c 'echo "{}" | python3 ./v2helper.py'

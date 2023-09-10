@@ -6,7 +6,7 @@ name: 自动push防止Actions自动停止
 on:
     workflow_dispatch:
     schedule:
-        - cron: '* * * * *'
+        - cron: '* * */59 * *'
     repository_dispatch:
         types: start_action
 
@@ -25,10 +25,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
       - uses: bcanseco/github-contribution-graph-action@v2
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -6,7 +6,7 @@ name: 自动push防止Actions自动停止
 on:
     workflow_dispatch:
     schedule:
-        - cron: '1/2 * * * *'
+        - cron: '* * * * *'
     repository_dispatch:
         types: start_action
 
@@ -29,7 +29,8 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 激活action
+      - uses: bcanseco/github-contribution-graph-action@v2
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GIT_EMAIL: myself@xiaokunji.com 
 

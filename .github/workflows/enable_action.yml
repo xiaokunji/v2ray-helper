@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: 自动push防止Actions自动停止
+
+# Controls when the workflow will run
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '1/2 * * * *'
+    repository_dispatch:
+        types: start_action
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 激活action
+

@@ -33,4 +33,5 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GIT_EMAIL: myself@xiaokunji.com 
+            GIT_COMMIT_MESSAGE: 自动激活action
 
